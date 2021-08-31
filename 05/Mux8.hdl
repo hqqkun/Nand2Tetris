@@ -3,7 +3,7 @@ CHIP Mux8 {
 	OUT out;
 	
 	PARTS:
-	// 
+	
 	Mux(a = a, b = b, sel = sel[0], out = outab);
 	Mux(a = c, b = d, sel = sel[0], out = outcd);
 	Mux(a = e, b = f, sel = sel[0], out = outef);
