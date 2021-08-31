@@ -9,7 +9,6 @@ CHIP Mux8 {
 	Mux(a = e, b = f, sel = sel[0], out = outef);
 	Mux(a = g, b = h, sel = sel[0], out = outgh);
 	
-	
 	Mux(a = outab, b = outcd, sel = sel[1], out = outabcd);
 	Mux(a = outef, b = outgh, sel = sel[1], out = outefgh);
 	
