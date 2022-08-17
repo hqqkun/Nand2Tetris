@@ -36,7 +36,7 @@ public class CodeWriter {
             e.printStackTrace();
         }
         initArgs();
-        //writeBootstrap();
+        writeBootstrap();
     }
 
     private void initArgs() {
