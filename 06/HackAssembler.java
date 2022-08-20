@@ -11,7 +11,7 @@ public class HackAssembler {
     private int staticVarIndex;
     
     private String processedInput;
-    private String outputFilePath;
+    private final String outputFilePath;
 
     public static void main(String[] args) {
         if (args.length != 1) {    
@@ -42,9 +42,9 @@ public class HackAssembler {
             e.printStackTrace();
         }
         {
-            String inpuFilePath = inputFile.getAbsolutePath();
-            int index = inpuFilePath.lastIndexOf('.');
-            outputFilePath = inpuFilePath.substring(0, index) + ".hack";
+            String inputFilePath = inputFile.getAbsolutePath();
+            int index = inputFilePath.lastIndexOf('.');
+            outputFilePath = inputFilePath.substring(0, index) + ".hack";
             File outputFile = new File(outputFilePath);
             initArgs(outputFile);
         }
@@ -117,7 +117,7 @@ public class HackAssembler {
         }
     }
 
-    // address instruvtion -> @addr
+    // address instruction -> @address
     private void handleAInstr() {
         String symbol = parser.symbol();
         int address;
@@ -138,7 +138,7 @@ public class HackAssembler {
         }
         String bitAddress = Integer.toBinaryString(address);
         // adding zeros.
-        codeWriter.println("0" + addingZeros(bitAddress, 15));
+        codeWriter.println("0" + addingZeros(bitAddress));
     }
 
     // compute instruction.
@@ -154,9 +154,9 @@ public class HackAssembler {
         codeWriter.close();
     }
 
-    private static String addingZeros(String strIn, int len){
+    private static String addingZeros(String strIn){
         StringBuilder strInBuilder = new StringBuilder(strIn);
-        for (int i = strInBuilder.length(); i < len; i++){
+        for (int i = strInBuilder.length(); i < 15; i++){
             strInBuilder.insert(0, "0");
         }
         strIn = strInBuilder.toString();
